@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-lime-canvas: #bce83b;
+  --color-olive-mid: #8cb924;
+  --color-olive-deep: #5e8216;
+  --color-forest-ink: #091e0e;
+  --color-forest-surface: #113018;
+  --color-cream-highlight: #f5fce0;
+}
+
+@layer base {
+  html {
+    background-color: #9ed029;
+    color: #091e0e;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background: radial-gradient(
+      125% 115% at 22% 18%,
+      #ccf252 0%,
+      #a5d82d 42%,
+      #7da71f 78%,
+      #597b14 100%
+    );
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: #091e0e;
+    color: #ccf252;
+  }
+}
+
+/* Subtle studio glass card styling without heavy full-screen blur bottlenecks */
+.glass-studio-light {
+  background: linear-gradient(
+    135deg,
+    rgba(246, 253, 224, 0.62) 0%,
+    rgba(227, 247, 152, 0.42) 100%
+  );
+  border: 1px solid rgba(9, 30, 14, 0.14);
+  box-shadow:
+    0 20px 50px -18px rgba(24, 48, 8, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.glass-studio-dark {
+  background: linear-gradient(
+    145deg,
+    rgba(11, 34, 16, 0.88) 0%,
+    rgba(19, 51, 27, 0.82) 100%
+  );
+  border: 1px solid rgba(204, 242, 82, 0.22);
+  box-shadow:
+    0 24px 60px -16px rgba(6, 20, 9, 0.42),
+    inset 0 1px 0 rgba(245, 252, 224, 0.12);
+}
+
+/* Animated nav link underline */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #091e0e;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-underline:hover::after,
+.nav-underline[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@keyframes about-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.3333%, 0, 0);
+  }
+}
+
+.about-marquee-track {
+  animation: about-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-underline::after {
+    transition: none;
+  }
+
+  .about-marquee-track {
+    animation: none;
+  }
+}
+

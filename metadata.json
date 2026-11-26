@@ -1,0 +1,6 @@
+{
+  "name": "MONIESH® — Creative 3D Developer Portfolio",
+  "description": "Experimental interactive 3D developer portfolio for MONIESH®, exploring AI, software engineering, and creative technology.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
